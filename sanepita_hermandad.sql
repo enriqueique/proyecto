@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-11-2018 a las 16:13:04
+-- Tiempo de generación: 08-11-2018 a las 14:56:29
 -- Versión del servidor: 10.0.27-MariaDB-cll-lve
 -- Versión de PHP: 5.4.31
 
@@ -23,21 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `asistencia`
---
-
-CREATE TABLE IF NOT EXISTS `asistencia` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hermano` int(11) DEFAULT NULL,
-  `reunion` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `he_as` (`hermano`),
-  KEY `re_nu` (`reunion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `eventos`
 --
 
@@ -45,20 +30,11 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(25) DEFAULT NULL,
   `direccion` varchar(25) DEFAULT NULL,
-  `fecha` date DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tipo` varchar(25) DEFAULT NULL,
-  `observaciones` varchar(80) DEFAULT NULL,
-  `participantes` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ev_he` (`participantes`)
+  `observaciones` text,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Volcado de datos para la tabla `eventos`
---
-
-INSERT INTO `eventos` (`id`, `nombre`, `direccion`, `fecha`, `tipo`, `observaciones`, `participantes`) VALUES
-(1, 'comida', 'parque', '2018-11-12', 'donativos', 'traed candelabros', 1);
 
 -- --------------------------------------------------------
 
@@ -73,46 +49,63 @@ CREATE TABLE IF NOT EXISTS `hermanos` (
   `contraseña` varchar(25) DEFAULT NULL,
   `fnacimiento` date DEFAULT NULL,
   `finscripcion` date DEFAULT NULL,
-  `rol` int(3) DEFAULT NULL,
+  `rol` int(11) DEFAULT '3',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `hermanos`
 --
 
 INSERT INTO `hermanos` (`id`, `nombre`, `apellidos`, `contraseña`, `fnacimiento`, `finscripcion`, `rol`) VALUES
-(1, 'Pruebas', 'uno', 'dos', '2018-11-12', '2018-11-13', 5);
+(1, 'Enrique', 'Vazquez', 'cc00728f2a551c23ef917dfd7', '2018-11-15', '2018-10-08', 1),
+(2, 'Manuel', 'Fernandez', 'cc00728f2a551c23ef917dfd7', '2018-11-13', '2018-11-13', 3),
+(3, 'Mario', 'Salas', 'cc00728f2a551c23ef917dfd7', '2018-11-13', '2018-11-05', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `historial`
+-- Estructura de tabla para la tabla `he_ev`
 --
 
-CREATE TABLE IF NOT EXISTS `historial` (
+CREATE TABLE IF NOT EXISTS `he_ev` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `asistencia` int(11) DEFAULT NULL,
+  `evento` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `he_ev` (`asistencia`),
+  KEY `ev_nu` (`evento`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `he_pa`
+--
+
+CREATE TABLE IF NOT EXISTS `he_pa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hermano` int(11) DEFAULT NULL,
   `pago` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `he_pa` (`hermano`),
   KEY `pa_nu` (`pago`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inventario`
+-- Estructura de tabla para la tabla `he_re`
 --
 
-CREATE TABLE IF NOT EXISTS `inventario` (
+CREATE TABLE IF NOT EXISTS `he_re` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(25) DEFAULT NULL,
-  `cantidad` varchar(25) DEFAULT NULL,
-  `estado` varchar(25) DEFAULT NULL,
-  `fentrada` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `participante` int(11) DEFAULT NULL,
+  `reunion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pa_re` (`participante`),
+  KEY `re_nu` (`reunion`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -123,27 +116,10 @@ CREATE TABLE IF NOT EXISTS `inventario` (
 CREATE TABLE IF NOT EXISTS `pagos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `concepto` text,
-  `hermano` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `importe` double DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pa_he` (`hermano`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `participacion`
---
-
-CREATE TABLE IF NOT EXISTS `participacion` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `participante` int(11) DEFAULT NULL,
-  `evento` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pa_ev` (`participante`),
-  KEY `ev_nu` (`evento`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -157,9 +133,22 @@ CREATE TABLE IF NOT EXISTS `reuniones` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tipo` varchar(25) DEFAULT NULL,
   `observaciones` text,
-  `participantes` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `re_he` (`participantes`)
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `utileria`
+--
+
+CREATE TABLE IF NOT EXISTS `utileria` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(25) DEFAULT NULL,
+  `cantidad` varchar(25) DEFAULT NULL,
+  `estado` varchar(25) DEFAULT NULL,
+  `fentrada` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -167,43 +156,25 @@ CREATE TABLE IF NOT EXISTS `reuniones` (
 --
 
 --
--- Filtros para la tabla `asistencia`
+-- Filtros para la tabla `he_ev`
 --
-ALTER TABLE `asistencia`
-  ADD CONSTRAINT `he_as` FOREIGN KEY (`hermano`) REFERENCES `hermanos` (`id`),
-  ADD CONSTRAINT `re_nu` FOREIGN KEY (`reunion`) REFERENCES `reuniones` (`id`);
+ALTER TABLE `he_ev`
+  ADD CONSTRAINT `ev_nu` FOREIGN KEY (`evento`) REFERENCES `eventos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `he_ev` FOREIGN KEY (`asistencia`) REFERENCES `hermanos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `eventos`
+-- Filtros para la tabla `he_pa`
 --
-ALTER TABLE `eventos`
-  ADD CONSTRAINT `ev_he` FOREIGN KEY (`participantes`) REFERENCES `hermanos` (`id`);
+ALTER TABLE `he_pa`
+  ADD CONSTRAINT `he_pa` FOREIGN KEY (`hermano`) REFERENCES `hermanos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pa_nu` FOREIGN KEY (`pago`) REFERENCES `pagos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `historial`
+-- Filtros para la tabla `he_re`
 --
-ALTER TABLE `historial`
-  ADD CONSTRAINT `he_pa` FOREIGN KEY (`hermano`) REFERENCES `hermanos` (`id`),
-  ADD CONSTRAINT `pa_nu` FOREIGN KEY (`pago`) REFERENCES `pagos` (`id`);
-
---
--- Filtros para la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD CONSTRAINT `pa_he` FOREIGN KEY (`hermano`) REFERENCES `hermanos` (`id`);
-
---
--- Filtros para la tabla `participacion`
---
-ALTER TABLE `participacion`
-  ADD CONSTRAINT `ev_nu` FOREIGN KEY (`evento`) REFERENCES `eventos` (`id`),
-  ADD CONSTRAINT `pa_ev` FOREIGN KEY (`participante`) REFERENCES `hermanos` (`id`);
-
---
--- Filtros para la tabla `reuniones`
---
-ALTER TABLE `reuniones`
-  ADD CONSTRAINT `re_he` FOREIGN KEY (`participantes`) REFERENCES `hermanos` (`id`);
+ALTER TABLE `he_re`
+  ADD CONSTRAINT `pa_re` FOREIGN KEY (`participante`) REFERENCES `hermanos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `re_nu` FOREIGN KEY (`reunion`) REFERENCES `reuniones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
