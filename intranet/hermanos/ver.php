@@ -11,7 +11,7 @@
 
 			<ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="<?= $base_url ?>/intranet">Dashboard</a>
+              <a href="<?= $base_url ?>/intranet">Panel</a>
             </li>
             <li class="breadcrumb-item">
               <a href="<?= $base_url ?>/intranet/hermanos">Hermanos</a>
