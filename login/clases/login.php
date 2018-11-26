@@ -1,6 +1,6 @@
 <?php
 
-require ("../../conexion/conexion.php");
+require ("../conexion.php");
 
 class Login extends Conexion {
 	public function __construct(){
@@ -11,7 +11,7 @@ class Login extends Conexion {
 
 		// Verificamos si hay un usuario que existe con ese correo;
 		if($checkEmail = $this->checkUser($user['email'])){
-
+			// si existe comprobamos su  contraseña
 			if($this->verifyPassword($checkEmail, $user['password'])){
 				// Si el usuario es el correcto creamos los parametros para la sesion y ledejamos entrar a la intranet.
 				session_start();
@@ -40,15 +40,15 @@ class Login extends Conexion {
 	public function checkUser($email){
 		// Realiza la busqueda del usuario mediante su correo electrónico
 		$search_user = "SELECT * FROM hermanos WHERE email = '$email' LIMIT 1";
-
+		// Ejecutamos la consulta
 		$resultado = $this->conexion_db->query($search_user);
 		// Obtenemos mediante objeto al usuario
 		$user = $resultado->fetch_object();
-		// Si no hay usuario
+		// Si al contar el registro nos da 0 quiere decir que no hay ningún usuario con ese correo
 		if (count($user) == 0 ){
 			return false;
 		}
-		// si no, devuelve los datos
+		// de lo contrario devuelve los datos de dicho usuario
 		return $user;
 	}
 
@@ -62,6 +62,7 @@ class Login extends Conexion {
 	}
 	
 }
+
 
 ?>
 

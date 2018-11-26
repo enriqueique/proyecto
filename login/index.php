@@ -35,14 +35,12 @@
               <?php if (isset($_POST['submit'])): ?>
 
                 <?php 
-                  //var_dump($_POST);
                   require "clases/login.php"; 
                   $login = new Login();
-                  //var_dump($_POST);
                   $error = $login->startLogin($_POST);
                 ?>
                 <div class="alert alert-danger">
-                  <strong>Ups!.</strong> <?= $error ?>
+                  <strong>Algo ha salido Mal</strong> <?= $error ?>
                 </div>
 
               <?php endif ?>
@@ -50,7 +48,7 @@
                 <div class="form-group">
                   <div class="form-label-group">
                     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" name="email">
-                    <label for="inputEmail">Correo Eléctronico</label>
+                    <label for="inputEmail">Correo Electrónico</label>
                   </div>
                 </div>
                 <div class="form-group">
