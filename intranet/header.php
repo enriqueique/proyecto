@@ -107,9 +107,9 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?= $base_url ?>/intranet/inventario" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="<?= $base_url ?>/intranet/utileria" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-            <span>Inventario</span>
+            <span>Utileria</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="table.php">Todos los artículos</a>
