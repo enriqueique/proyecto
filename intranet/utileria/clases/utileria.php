@@ -37,7 +37,7 @@ class Utileria extends Conexion {
 		header("Location: index.php");	
 	}
 
-	public function edit($nombre){
+	public function edit($id){
 
 		$buscar_util = "SELECT * FROM utileria WHERE id=".$id;
 		$resultado = $this->conexion_db->query($buscar_util);
@@ -58,7 +58,7 @@ class Utileria extends Conexion {
 
 	public function delete($id){
 		
-		$consulta = "DELETE FROM hermanos WHERE id = $id";
+		$consulta = "DELETE FROM utileria WHERE id = $id";
 		$resultado = $this->conexion_db->query($consulta);
 		
 		if(!$resultado){

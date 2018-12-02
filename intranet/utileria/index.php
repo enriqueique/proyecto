@@ -37,6 +37,7 @@
                       <th>Cantidad</th>
                       <th>Estado</th>
                       <th>Fecha de Entrada</th>
+		      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -45,6 +46,7 @@
                       <th>Cantidad</th>
                       <th>Estado</th>
                       <th>Fecha de Entrada</th>
+    		      <th>Acciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -54,7 +56,6 @@
                             <td><?= $utileria['cantidad'] ?></td>
                             <td><?= $utileria['estado'] ?></td>
                             <td><?= $utileria['fentrada'] ?></td>
-                              ?>
                             <td>
                               <a href="ver.php?id=<?= $utileria['id'] ?>">
                                   <span>ver</span>
@@ -115,6 +116,12 @@
                                 <label for="estado">Estado</label>
                               </div>
                             </div>
+			<div class="col-md-6">
+                              <div class="form-label-group">
+                                <input type="date" id="lastName" class="form-control" placeholder="Ingresa Fecha" name="fentrada">
+                                <label for="lastName">Fecha de Ingreso</label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </form>
@@ -131,7 +138,7 @@
 
 <?php else: ?>
           
-  <?php $hermanos->add($_POST); ?>
+  <?php $utileria->add($_POST); ?>
 
 <?php endif ?>
 

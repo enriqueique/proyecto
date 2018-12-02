@@ -85,13 +85,13 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?= $base_url ?>/intranet/reuniones" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="<?= $base_url ?><?= $base_url ?>/intranet/reuniones" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             <span>Reuniones</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="/intranet/reuniones">Todos las reuniones</a>
-            <a class="dropdown-item active" href="/intranet/reuniones">Añadir Nuevo</a>
+            <a class="dropdown-item" href="<?= $base_url ?>/intranet/reuniones">Todos las reuniones</a>
+            <a class="dropdown-item active" href="<?= $base_url ?>/intranet/reuniones">Añadir Nuevo</a>
           </div>
         </li>
 
@@ -101,8 +101,8 @@
             <span>Eventos</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="/intranet/eventos">Todos los eventos</a>
-            <a class="dropdown-item active" href="/intranet/eventos">Añadir Nuevo</a>
+            <a class="dropdown-item" href="<?= $base_url ?>/intranet/eventos">Todos los eventos</a>
+            <a class="dropdown-item active" href="<?= $base_url ?>/intranet/eventos">Añadir Nuevo</a>
           </div>
         </li>
 
@@ -112,8 +112,8 @@
             <span>Utileria</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="/intranet/utileria">Todos los artículos</a>
-            <a class="dropdown-item active" href="/intranet/utileria">Añadir Nuevo</a>
+            <a class="dropdown-item" href="<?= $base_url ?>/intranet/utileria">Todos los artículos</a>
+            <a class="dropdown-item active" href="<?= $base_url ?>/intranet/utileria">Añadir Nuevo</a>
           </div>
         </li>
 

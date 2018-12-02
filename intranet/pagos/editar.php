@@ -1,12 +1,12 @@
 <?php if (isset($_GET['id'])): ?>
 	<?php 
 		require "clases/pagos.php"; 
-		$pagos = new Pagos();
+		$pago = new Pagos();
 	?>
 
 	<?php if (!isset($_POST['submit'])): ?>
 
-		<?php $editarPagos = $pagos->edit($_GET['id']); ?>
+		<?php $editarPagos = $pago->edit($_GET['id']); ?>
 
 				<?php include ('../header.php'); ?> 
 			
@@ -38,13 +38,13 @@
 		              <div class="form-row">
 		                <div class="col-md-6">
 		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="fecha" name="cantidad" value="<?= $editarPagos[0]['fecha'] ?>">
+		                    <input type="date" id="firstName" class="form-control" placeholder="fecha" name="fecha" value="<?= $editarPagos[0]['fecha'] ?>">
 		                    <label for="firstName">Fecha</label>
 		                  </div>
 		                </div>
 		                <div class="col-md-6">
 		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="Importe" required="required" name="estado" value="<?= $editarPagos[0]['importe'] ?>">
+		                    <input type="double" id="firstName" class="form-control" placeholder="Importe" required="required" name="importe" value="<?= $editarPagos[0]['importe'] ?>">
 		                    <label for="firstName">Importe</label>
 		                  </div>
 		                </div>
@@ -61,7 +61,7 @@
 
 	<?php else: ?>
 
-		<?php $pagos->update($_POST, $_GET['id']); ?>
+		<?php $pago->update($_POST, $_GET['id']); ?>
 		
 	<?php endif ?>
 	 

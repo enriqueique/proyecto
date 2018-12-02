@@ -25,7 +25,7 @@ class Pagos extends Conexion {
 		return $data;
 	}
 
-// Insertar datos.
+// Insertar datos
 
 	public function add($pago){
         
@@ -45,7 +45,7 @@ class Pagos extends Conexion {
 	public function edit($pago){
 
 		$buscar_pago = "SELECT * FROM pagos WHERE id=".$pago;
-		$resultado = $this->conexion_db->query($buscar_hermano);
+		$resultado = $this->conexion_db->query($buscar_pago);
 		$data = $resultado->fetch_all(MYSQLI_ASSOC);
 		return $data;
 	}

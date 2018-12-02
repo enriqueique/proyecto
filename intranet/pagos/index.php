@@ -1,12 +1,12 @@
 <?php 
   require "clases/pagos.php"; 
-  $pagos = new Pagos();
+  $pago = new Pagos();
 ?>
 
-<?php if (!isset($_POST['nombre'])): ?>
+<?php if (!isset($_POST['concepto'])): ?>
 
   <?php include ('../header.php'); ?> 
-      <?php $pagosdatos = $pagos->index(); ?>
+      <?php $pagosdatos = $pago->index(); ?>
 
       <div id="content-wrapper">
 
@@ -47,22 +47,22 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    <?php foreach ($pagosdatos as $pagos): ?>
+                    <?php foreach ($pagosdatos as $pago): ?>
                         <tr>
-                            <td><?= $pagos['concepto'] ?></td>
-                            <td><?= $pagos['fecha'] ?></td>
-                            <td><?= $pagos['importe'] ?></td>
+                            <td><?= $pago['concepto'] ?></td>
+                            <td><?= $pago['fecha'] ?></td>
+                            <td><?= $pago['importe'] ?></td>
                             
                             <td>
-                              <a href="ver.php?id=<?= $pagos['id'] ?>">
+                              <a href="ver.php?id=<?= $pago['id'] ?>">
                                   <span>ver</span>
                               </a>
                               |
-                              <a href="editar.php?id=<?= $pagos['id'] ?>">
+                              <a href="editar.php?id=<?= $pago['id'] ?>">
                                   <span>editar</span>
                               </a>
                               |
-                              <a href="eliminar.php?id=<?= $pagos['id'] ?>">
+                              <a href="eliminar.php?id=<?= $pago['id'] ?>">
                                   <span>eliminar</span>
                               </a>
                             </td>
@@ -106,8 +106,8 @@
                         </div>
                         <div class="form-group">
                           <div class="form-label-group">
-                             <input type="double" id="confirmPassword" class="form-control" placeholder="importe" required="required" name="importe">
-                                <label for="confirmPassword">Importe</label>
+                             <input type="double" id="lastName" class="form-control" placeholder="Ingresa Importe" required="required" name="importe">
+                                <label for="lastName">Importe</label>
                           </div>
                         </div>
                       </form>
@@ -124,7 +124,7 @@
 
 <?php else: ?>
           
-  <?php $hermanos->add($_POST); ?>
+  <?php $pago->add($_POST); ?>
 
 <?php endif ?>
 

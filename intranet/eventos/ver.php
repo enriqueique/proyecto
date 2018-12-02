@@ -13,7 +13,7 @@
               <a href="<?= $base_url ?>/intranet">Panel</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="<?= $base_url ?>/intranet/hermanos">Eventos</a>
+              <a href="<?= $base_url ?>/intranet/eventos">Eventos</a>
             </li>
             <li class="breadcrumb-item active">ver</li>
        		</ol>

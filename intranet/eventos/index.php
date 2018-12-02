@@ -199,7 +199,7 @@ ini_set('display_errors', '1');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('agregarHermano').submit();">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('agregarEvento').submit();">Guardar</button>
               </div>
             </div>
           </div>

@@ -13,10 +13,10 @@
 			<div class="container">
 				<ol class="breadcrumb">
 		            <li class="breadcrumb-item">
-		              <a href="<?= $base_url ?>/intranet">Dashboard</a>
+		              <a href="<?= $base_url ?>/intranet">Panel</a>
 		            </li>
 		            <li class="breadcrumb-item">
-		              <a href="<?= $base_url ?>/intranet/hermanos">Eventos</a>
+		              <a href="<?= $base_url ?>/intranet/eventos">Eventos</a>
 		            </li>
 		            <li class="breadcrumb-item active">Editar</li>
 		        </ol>
