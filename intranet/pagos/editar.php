@@ -1,12 +1,12 @@
 <?php if (isset($_GET['id'])): ?>
 	<?php 
-		require "clases/utileria.php"; 
-		$utileria = new Utileria();
+		require "clases/pagos.php"; 
+		$pagos = new Pagos();
 	?>
 
 	<?php if (!isset($_POST['submit'])): ?>
 
-		<?php $editarUtileria = $utileria->edit($_GET['id']); ?>
+		<?php $editarPagos = $pagos->edit($_GET['id']); ?>
 
 				<?php include ('../header.php'); ?> 
 			
@@ -16,20 +16,20 @@
               <a href="<?= $base_url ?>/intranet">Panel</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="<?= $base_url ?>/intranet/utileria">Utileria</a>
+              <a href="<?= $base_url ?>/intranet/pagos">Pagos</a>
             </li>
             <li class="breadcrumb-item active">Editar</li>
           </ol>
 		      <div class="card mx-auto">
-		        <div class="card-header">Editar Útil</div>
+		        <div class="card-header">Editar Pago</div>
 		        <div class="card-body">
 		          <form action="editar.php?id=<?= $_GET['id'] ?>" method="POST">
 		            <div class="form-group">
 		              <div class="form-row">
 		                <div class="col-md-6">
 		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="nombre" value="<?= $editarUtileria[0]['nombre'] ?>">
-		                    <label for="firstName">Nombre</label>
+		                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="concepto" value="<?= $editarPagos[0]['concepto'] ?>">
+		                    <label for="firstName">Concepto</label>
 		                  </div>
 		                </div>
 		              </div>
@@ -38,14 +38,14 @@
 		              <div class="form-row">
 		                <div class="col-md-6">
 		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="Cantidad" name="cantidad" value="<?= $editarUtileria[0]['cantidad'] ?>">
-		                    <label for="firstName">Cantidad</label>
+		                    <input type="text" id="firstName" class="form-control" placeholder="fecha" name="cantidad" value="<?= $editarPagos[0]['fecha'] ?>">
+		                    <label for="firstName">Fecha</label>
 		                  </div>
 		                </div>
 		                <div class="col-md-6">
 		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="Estado" required="required" name="estado" value="<?= $editarUtileria[0]['estado'] ?>">
-		                    <label for="firstName">Estado</label>
+		                    <input type="text" id="firstName" class="form-control" placeholder="Importe" required="required" name="estado" value="<?= $editarPagos[0]['importe'] ?>">
+		                    <label for="firstName">Importe</label>
 		                  </div>
 		                </div>
 		              </div>
@@ -61,7 +61,7 @@
 
 	<?php else: ?>
 
-		<?php $utileria->update($_POST, $_GET['id']); ?>
+		<?php $pagos->update($_POST, $_GET['id']); ?>
 		
 	<?php endif ?>
 	 

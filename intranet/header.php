@@ -90,8 +90,8 @@
             <span>Reuniones</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="table.php">Todos las reuniones</a>
-            <a class="dropdown-item active" href="blank.html">Añadir Nuevo</a>
+            <a class="dropdown-item" href="/intranet/reuniones">Todos las reuniones</a>
+            <a class="dropdown-item active" href="/intranet/reuniones">Añadir Nuevo</a>
           </div>
         </li>
 
@@ -101,8 +101,8 @@
             <span>Eventos</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="table.php">Todos los eventos</a>
-            <a class="dropdown-item active" href="blank.html">Añadir Nuevo</a>
+            <a class="dropdown-item" href="/intranet/eventos">Todos los eventos</a>
+            <a class="dropdown-item active" href="/intranet/eventos">Añadir Nuevo</a>
           </div>
         </li>
 
@@ -112,8 +112,8 @@
             <span>Utileria</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="table.php">Todos los artículos</a>
-            <a class="dropdown-item active" href="blank.html">Añadir Nuevo</a>
+            <a class="dropdown-item" href="/intranet/utileria">Todos los artículos</a>
+            <a class="dropdown-item active" href="/intranet/utileria">Añadir Nuevo</a>
           </div>
         </li>
 
