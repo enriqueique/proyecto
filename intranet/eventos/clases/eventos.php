@@ -1,6 +1,6 @@
 <?php
 
-// Contenedor de funciones
+// Archivo contenedor de funciones para eventos
 
 require ("../../conexion.php");
 
@@ -8,7 +8,6 @@ class Eventos extends Conexion {
 	public function __construct(){
 		parent::__construct();
 	}
-// Left Join para para sacar los hermanos que asisten a eventos agrupados por su id
 	
 	public function getEventos(){
 		$consulta = "SELECT eventos.* , count(he_ev.asistencia) as asistencia FROM eventos LEFT JOIN he_ev ON he_ev.evento = eventos.id GROUP BY eventos.id";
@@ -17,8 +16,6 @@ class Eventos extends Conexion {
 		return $data;
 	}
 
-// Consulta de evento según su id
-
 	public function getEvento($evento){
 		$buscar_evento = "SELECT * FROM eventos WHERE id=".$evento;
 		$resultado = $this->conexion_db->query($buscar_evento);
@@ -26,11 +23,7 @@ class Eventos extends Conexion {
 		return $data;
 	}
 
-// Consulta de inserción de datos
-
 	public function insertEvento($evento){
-
-// Separo y guardo los datos adquiridos, por un lado las llaves en $columns y el array en $values 
 
 		$columns = implode("," , array_keys($evento));
 		$values = "'".implode("','" , $evento)."'";
@@ -45,8 +38,6 @@ class Eventos extends Conexion {
 	
 		return true;	
 	}
-
-// Con die() fuerzo el error, para que no queden campos vacios
 
 	public function updateEvento($evento, $id){
 

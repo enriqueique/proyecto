@@ -28,6 +28,10 @@
     <!-- Custom styles for this template-->
     <link href="<?= $base_url ?>/assets/css/sb-admin.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
   </head>
 
   <body id="page-top" class="sidebar-toggled">
@@ -84,44 +88,31 @@
             <span>Hermanos</span></a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?= $base_url ?><?= $base_url ?>/intranet/reuniones" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            <span>Reuniones</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?= $base_url ?>/intranet/reuniones">Todos las reuniones</a>
-            <a class="dropdown-item active" href="<?= $base_url ?>/intranet/reuniones">Añadir Nuevo</a>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?= $base_url ?>/intranet/eventos" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            <span>Eventos</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?= $base_url ?>/intranet/eventos">Todos los eventos</a>
-            <a class="dropdown-item active" href="<?= $base_url ?>/intranet/eventos">Añadir Nuevo</a>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="<?= $base_url ?>/intranet/utileria" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-            <span>Utileria</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?= $base_url ?>/intranet/utileria">Todos los artículos</a>
-            <a class="dropdown-item active" href="<?= $base_url ?>/intranet/utileria">Añadir Nuevo</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/reuniones">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Reuniones</span></a>
         </li>
 
         <li class="nav-item">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/eventos">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Eventos</span></a>
+        </li>
+
+	<li class="nav-item">
           <a class="nav-link" href="<?= $base_url ?>/intranet/pagos">
             <i class="fas fa-fw fa-table"></i>
             <span>Pagos</span></a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/utileria">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Utileria</span></a>
+        </li>
+
+        
       </ul>
 
       <div id="content-wrapper">

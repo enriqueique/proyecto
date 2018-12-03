@@ -1,22 +1,22 @@
 <?php if (isset($_GET['id'])): ?>
 	<?php 
-		require "clases/eventosHermanos.php"; 
-		$allEvento = new EventosHermanos();
+		require "clases/reunionesHermanos.php"; 
+		$allReunion = new ReunionesHermanos();
 	?>
 
 	<?php if (!isset($_POST['submit'])): ?>
 
-		<?php $evento = $allEvento->edit($_GET['id']); ?>
+		<?php $reunion = $allReunion->edit($_GET['id']); ?>
 
 		<?php include ('../header.php'); ?> 
 			
 		<div class="container-fluid mb-3">
 			<ol class="breadcrumb">
 	            <li class="breadcrumb-item">
-	              <a href="<?= $base_url ?>/intranet">Dashboard</a>
+	              <a href="<?= $base_url ?>/intranet">Panel</a>
 	            </li>
 	            <li class="breadcrumb-item">
-	              <a href="<?= $base_url ?>/intranet/eventos">Eventos</a>
+	              <a href="<?= $base_url ?>/intranet/reuniones">Reuniones</a>
 	            </li>
 	            <li class="breadcrumb-item active">Editar</li>
 	        </ol>
@@ -24,36 +24,37 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="card mx-auto">
-				        <div class="card-header">Editar Evento</div>
+				        <div class="card-header">Editar Reunion</div>
 				        <div class="card-body">
 				          <form action="editar.php?id=<?= $_GET['id'] ?>" method="POST">
 				            <div class="form-group">
 				              	<div class="form-row">
 				                	<div class="col-md-6">
 				                  <div class="form-label-group">
-				                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="nombre" value="<?= $evento->nombre ?>" >
+				                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="nombre" value="<?= $reunion->nombre ?>" >
 				                    <label for="firstName">Nombre</label>
 				                  </div>
-				                	</div>
-				                	<div class="col-md-6">
+				                </div>	
+						<div class="col-md-6">
 				                  <div class="form-label-group">
-				                    <input type="text" id="lastName" class="form-control" placeholder="Dirección" required="required" name="direccion" value="<?= $evento->direccion ?>" >
-				                    <label for="lastName">Dirección</label>
+				                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="tipo" value="<?= $reunion->tipo ?>" >
+				                    <label for="firstName">Tipo</label>
 				                  </div>
 				                	</div>
+
 				              	</div>
 			            	</div>
 				            <div class="form-group">
 				              <div class="form-row">
 				                <div class="col-md-6">
 				                  <div class="form-label-group">
-				                    <input type="date" id="inputPassword" class="form-control" placeholder="Fecha" required="required" name="fecha" value="<?= date( "Y-m-d", strtotime( $evento->fecha ) ); ?>" >
+				                    <input type="date" id="inputPassword" class="form-control" placeholder="Fecha" required="required" name="fecha" value="<?= date( "Y-m-d", strtotime( $reunion->fecha ) ); ?>" >
 				                    <label for="inputPassword">Fecha</label>
 				                  </div>
 				                </div>
 				                <div class="col-md-6">
 				                  <div class="form-label-group">
-				                    <input type="time" id="inputPassword" class="form-control" placeholder="Hora" required="required" name="hora" value="<?= date( "H:m", strtotime( $evento->fecha ) ); ?>" >
+				                    <input type="time" id="inputPassword" class="form-control" placeholder="Hora" required="required" name="hora" value="<?= date( "H:m", strtotime( $reunion->fecha ) ); ?>" >
 				                    <label for="inputPassword">Hora</label>
 				                  </div>
 				                </div>
@@ -61,7 +62,7 @@
 				            </div>
 				            <div class="form-group">
 							    <label for="exampleFormControlSelect1">Descripción</label>
-							    <textarea  class="form-control" name="observaciones" placeholder="Escribe aquí ..." rows="8" value=""><?= $evento->observaciones ?></textarea>
+							    <textarea  class="form-control" name="observaciones" placeholder="Escribe aquí ..." rows="8" value=""><?= $reunion->observaciones ?></textarea>
 							</div>
 					            <a class="btn btn-secondary" href="javascript:history.back(-1);">Atrás</a>
 					            <input type="submit" name="submit" class="btn btn-primary" value="Actualizar">  
@@ -117,20 +118,20 @@
 
 		<!-- SCRIPT PARA LISTAR HERMANOS -->
 		<script type="text/javascript">
-				var idEvento = <?= $evento->id ?>;
+				var idReunion = <?= $reunion->id ?>;
 
 				$(document).ready(function(){
 					$("#addHermanos").click(function(){
-						addHermanos(idEvento);
+						addHermanos(idReunion);
 					});
 				});
 
-				listaHermanosEvento(idEvento);
+				listaHermanosReunion(idReunion);
 
-				function addHermanos(evento) {
+				function addHermanos(reunion) {
 		            $.ajax({
 		              url: 'listahermanos.php',
-		              data:{'evento': evento, 'tipo': 'addHermanos' },
+		              data:{'reunion': reunion, 'tipo': 'addHermanos' },
 		              type: 'POST',
 		              dataType : 'json',
 		              success: function(res){
@@ -159,10 +160,10 @@
 		            });
 	          	}
 
-				function listaHermanosEvento(evento) {
+				function listaHermanosReunion(reunion) {
 		            $.ajax({
 		              url: 'listahermanos.php',
-		              data:{'evento': evento, 'tipo': 'listHermanos' },
+		              data:{'reunion': reunion, 'tipo': 'listHermanos' },
 		              type: 'POST',
 		              dataType : 'json',
 		              success: function(res){
@@ -173,7 +174,7 @@
 			                	idHermano = '<th>#' + (i+1) + '</th>';
 			                	nombre = '<td>' + res[i].nombre + '</td>';
 			                	apellidos = '<td>' + res[i].apellidos + '</td>';
-			                	eliminar = '<td><button title="Eliminar" type="button" class="close text-danger" onclick="eliminarHermano('+ evento + ',' + res[i].id +')"><span aria-hidden="true">&times;</span></button>';
+			                	eliminar = '<td><button title="Eliminar" type="button" class="close text-danger" onclick="eliminarHermano('+ reunion + ',' + res[i].id +')"><span aria-hidden="true">&times;</span></button>';
 			                	openli = '<tr>';
 			                	closeli = '</tr>';
 
@@ -181,7 +182,7 @@
 			                    
 			                }
 		                }else{
-		                	lista = '<div class="alert alert-info" role="alert">No hay ningun hermano agregado a este evento.</div>';
+		                	lista = '<div class="alert alert-info" role="alert">No hay ningun hermano agregado a este reunion.</div>';
 		                }
 		                
 
@@ -191,15 +192,15 @@
 		            });
 	          	}
 
-	          	function eliminarHermano(evento,hermano) {
+	          	function eliminarHermano(reunion,hermano) {
 		            var confirmacion = confirm("Estas Seguro que quieres eliminar a ese Hermano?");
 		            	if( confirmacion == true ){
 			                $.ajax({
 				                url: 'listahermanos.php',
-				                data:{'evento': evento, 'hermano': hermano},
+				                data:{'reunion': reunion, 'hermano': hermano},
 				                type: 'POST',
 				                success: function(){
-				                    listaHermanosEvento(evento);
+				                    listaHermanosReunion(reunion);
 				                }
 
 		                	});
@@ -216,13 +217,13 @@
 	
 		<?php if (isset($_POST['addAsistencia'])): ?>
 
-			<?php $allEvento->addHermanos($_GET['id'], $_POST);?>
+			<?php $allReunion->addHermanos($_GET['id'], $_POST);?>
 			
 		<?php endif ?>
 
 	<?php else: ?>
 
-		<?php $allEvento->update($_POST, $_GET['id']); ?>
+		<?php $allReunion->update($_POST, $_GET['id']); ?>
 
 	<?php endif ?>	 
 

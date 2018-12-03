@@ -3,14 +3,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ?>
 <?php 
-  require "clases/eventosHermanos.php"; 
-  $allEventos = new EventosHermanos();
+  require "clases/reunionesHermanos.php"; 
+  $allReuniones = new ReunionesHermanos();
 ?>
 
 <?php if (!isset($_POST['nombre'])): ?>
 
   <?php include ('../header.php'); ?> 
-      <?php $eventos = $allEventos->index(); ?>
+      <?php $reuniones = $allReuniones->index(); ?>
       <div id="content-wrapper">
 
         <div class="container-fluid mb-3">
@@ -19,26 +19,26 @@ ini_set('display_errors', '1');
             <li class="breadcrumb-item">
               <a href="<?= $base_url ?>/intranet">Panel</a>
             </li>
-            <li class="breadcrumb-item active">Eventos</li>
+            <li class="breadcrumb-item active">Reuniones</li>
           </ol>
 
           <!-- DataTables Example -->
           <div class="card">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Todos los Eventos</div>
+              Todos los Reuniones</div>
             <div class="card-body">
               <button style="margin-bottom: 10px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                <i class="fa fa-plus"></i> Nuevo Evento
+                <i class="fa fa-plus"></i> Nueva Reunion
               </button>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Nombre</th>
-                      <th>Dirección</th>
                       <th>Fecha</th>
                       <th>Hora</th>
+		      <th>Tipo</th>
                       <th>Asistencia</th>
                       <th>Acciones</th>
                     </tr>
@@ -46,37 +46,37 @@ ini_set('display_errors', '1');
                   <tfoot>
                     <tr>
                       <th>Nombre</th>
-                      <th>Dirección</th>
                       <th>Fecha</th>
                       <th>Hora</th>
+		      <th>Tipo</th>
                       <th>Asistencia</th>
                       <th>Acciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <?php foreach ($eventos as $evento): ?>
+                    <?php foreach ($reuniones as $reunion): ?>
                         <tr>
-                            <td><?= $evento['nombre'] ?></td>
-                            <td><?= $evento['direccion'] ?></td>
-                            <td><?= date( "Y-m-d", strtotime( $evento['fecha'] ) ); ?></td>
-                            <td><?= date( "H:m", strtotime( $evento['fecha'] ) ); ?></td>
+                            <td><?= $reunion['nombre'] ?></td>
+                            <td><?= date( "Y-m-d", strtotime( $reunion['fecha'] ) ); ?></td>
+                            <td><?= date( "H:m", strtotime( $reunion['fecha'] ) ); ?></td>
+			    <td><?= $reunion['tipo'] ?></td>
                             <td>
-                              <?php if ($evento['asistencia'] == 0 ) : ?>
+                              <?php if ($reunion['asistencia'] == 0 ) : ?>
                                 <button class="btn btn-danger btn-sm">Sin asistencias</button>
                               <?php else: ?>
-                                <button class="btn btn-primary btn-sm hermanos" data-id="<?= $evento['id'] ?>"><?= $evento['asistencia'] ?> asistencias</button>
+                                <button class="btn btn-primary btn-sm hermanos" data-id="<?= $reunion['id'] ?>"><?= $reunion['asistencia'] ?> asistencias</button>
                               <?php endif ?>
                             </td>
                             <td>
-                              <a href="ver.php?id=<?= $evento['id'] ?>">
+                              <a href="ver.php?id=<?= $reunion['id'] ?>">
                                   <span>ver</span>
                               </a>
                               |
-                              <a href="editar.php?id=<?= $evento['id'] ?>">
+                              <a href="editar.php?id=<?= $reunion['id'] ?>">
                                   <span>editar</span>
                               </a>
                               |
-                              <a href="eliminar.php?id=<?= $evento['id'] ?>">
+                              <a href="eliminar.php?id=<?= $reunion['id'] ?>">
                                   <span>eliminar</span>
                               </a>
                             </td>
@@ -98,13 +98,13 @@ ini_set('display_errors', '1');
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Evento</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Nueva Reunion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <form action="index.php" method="POST" id="agregarEvento" class="formulariomodal">
+                <form action="index.php" method="POST" id="agregarReunion" class="formulariomodal">
                     <div class="form-group">
                         <div class="form-row">
                           <div class="col-md-6">
@@ -113,10 +113,10 @@ ini_set('display_errors', '1');
                             <label for="firstName">Nombre</label>
                           </div>
                           </div>
-                          <div class="col-md-6">
+                           <div class="col-md-6">
                           <div class="form-label-group">
-                            <input type="text" id="lastName" class="form-control" placeholder="Dirección" required="required" name="direccion" value="" >
-                            <label for="lastName">Dirección</label>
+                            <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="tipo" value="" >
+                            <label for="firstName">Tipo</label>
                           </div>
                           </div>
                         </div>
@@ -145,7 +145,7 @@ ini_set('display_errors', '1');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('agregarHermano').submit();">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('agregarReunion').submit();">Guardar</button>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ ini_set('display_errors', '1');
 
 <?php else: ?>
 
-  <?php $allEventos->add($_POST); ?>
+  <?php $allReuniones->add($_POST); ?>
 
 <?php endif ?>
 

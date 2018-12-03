@@ -1,10 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-?>
-<?php
 
-// Consultas para Eventos
+// Archivo contenedor de funciones para 
 
 require ("eventos.php");
 
@@ -26,7 +22,6 @@ class EventosHermanos extends Eventos {
 		return $data;
 
 	}
-
 
 	public function add($evento){
 
@@ -74,11 +69,37 @@ class EventosHermanos extends Eventos {
 	}
 
 	public function getHermanos($evento){
+		$idEvento = $evento['evento'];
+		if ($evento['tipo'] == 'addHermanos') {
+			$consulta = "SELECT * FROM hermanos WHERE NOT EXISTS (SELECT NULL FROM he_ev WHERE asistencia = hermanos.id AND evento = $idEvento)";
+		}else{
+			$consulta = "SELECT hermanos.* FROM hermanos JOIN he_ev ON he_ev.asistencia = hermanos.id WHERE he_ev.evento = $idEvento GROUP BY hermanos.id";
+		}
 
-		$consulta = "SELECT hermanos.* FROM hermanos JOIN he_ev ON he_ev.asistencia = hermanos.id WHERE he_ev.evento = $evento GROUP BY hermanos.id";
 		$resultado = $this->conexion_db->query($consulta);
-		$data = $resultado->fetch_all(MYSQLI_ASSOC);
+		$data =$resultado->fetch_all(MYSQLI_ASSOC);
 		echo json_encode($data);
+
+	}
+
+	public function deleteHermano($evento, $hermano){
+		$consulta = "DELETE FROM he_ev WHERE evento = $evento AND asistencia = $hermano";
+		$resultado = $this->conexion_db->query($consulta);
+	}
+
+	public function addHermanos($evento, $hermanos){
+		foreach ($hermanos['addAsistencia'] as $asistencia) {
+			$consulta = "INSERT INTO he_ev (evento, asistencia) VALUES " . "(" . $evento . "," . $asistencia . ")";
+			$resultado = $this->conexion_db->query($consulta);
+
+			if(!$resultado){
+				echo $consulta;
+				echo "<br>Hubo un error en la consulta. Disculpa las molestias...";
+				exit();
+			}
+		}
+
+		header("Location: ver.php?id=$evento");
 	}
 	
 }
