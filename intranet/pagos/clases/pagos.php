@@ -1,6 +1,6 @@
 <?php
 
-// Contenedor de consultas, conexión a la bbdd
+// Archivo contenedor de funciones para pagos
 
 require ("../../conexion.php");
 
@@ -9,75 +9,67 @@ class Pagos extends Conexion {
 		parent::__construct();
 	}
 	
-	public function index(){
-		$consulta = "SELECT * FROM pagos";
+	public function getPagos(){
+		$consulta = "SELECT pagos.* , count(he_pa.pago) as pago FROM pagos LEFT JOIN he_pa ON he_pa.pago = pagos.id GROUP BY pagos.id";
 		$resultado = $this->conexion_db->query($consulta);
 		$data = $resultado->fetch_all(MYSQLI_ASSOC);
 		return $data;
 	}
 
-//funciones para sacar uno o todos los pagos
-
-	public function show($pago){
-		$buscar_pago = "SELECT * FROM pago WHERE id=".$pago;
+	public function getPago($pago){
+		$buscar_pago = "SELECT * FROM pagos WHERE id=".$pago;
 		$resultado = $this->conexion_db->query($buscar_pago);
-		$data = $resultado->fetch_all(MYSQLI_ASSOC);
+		$data = $resultado->fetch_object();
 		return $data;
 	}
 
-// Insertar datos
+	public function insertPago($pago){
 
-	public function add($pago){
-        
 		$columns = implode("," , array_keys($pago));
 		$values = "'".implode("','" , $pago)."'";
 		
 		$consulta = "INSERT INTO pagos ($columns) VALUES ($values)"; 
 		$resultado = $this->conexion_db->query($consulta);
-		if(!$resultado){
+		if (!$resultado) {
+			echo $consulta."<br>";
 			return false;
+			die();
 		}	
 	
-		header("Location: index.php");	
+		return true;	
 	}
 
+	public function updatePago($pago, $id){
 
-	public function edit($pago){
-
-		$buscar_pago = "SELECT * FROM pagos WHERE id=".$pago;
-		$resultado = $this->conexion_db->query($buscar_pago);
-		$data = $resultado->fetch_all(MYSQLI_ASSOC);
-		return $data;
-	}
-
-// Funciones de actualización, edit se guarda la consulta en una variable para hacer un fetch y devolver $data
-// update se le pasan la variable de datos (que lo contiene todo) y la variable id, por medio del foreach se actualizan los datos a la bbdd
-
-	public function update($pago, $id){
-		
 		foreach ($pago as $column => $value){
 			$consulta = "UPDATE pagos SET ". $column ."='". $value . "' WHERE id = ". $id;
 			$resultado = $this->conexion_db->query($consulta);
+			if (!$resultado) {
+				echo $consulta."<br>";
+				return false;
+				die();
+			}
 		}
 		
-		header("Location: index.php");	
+		return true;	
 	}
 
-// Elimina por medio de id
 
-	public function delete($pago){
+	public function deletePago($pago){
 		
 		$consulta = "DELETE FROM pagos WHERE id = $pago";
 		$resultado = $this->conexion_db->query($consulta);
 		
-		if(!$resultado){
+		if (!$resultado) {
 			return false;
-		}	
+			die();
+		}
 	
-		header("Location: index.php");	
+		return true;
 	}
 	
 }
 
 ?>
+
 

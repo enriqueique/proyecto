@@ -155,7 +155,7 @@
   <?php include ('../footer.php'); ?> 
 
 <?php else: ?>
-  hola
+
   <?php $hermanos->add($_POST); ?>
 
 <?php endif ?>

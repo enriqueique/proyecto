@@ -13,7 +13,7 @@
 		<div class="container-fluid mb-3">
 			<ol class="breadcrumb">
 	            <li class="breadcrumb-item">
-	              <a href="<?= $base_url ?>/intranet">Dashboard</a>
+	              <a href="<?= $base_url ?>/intranet">Panel</a>
 	            </li>
 	            <li class="breadcrumb-item">
 	              <a href="<?= $base_url ?>/intranet/eventos">Eventos</a>
@@ -45,18 +45,24 @@
 			            	</div>
 				            <div class="form-group">
 				              <div class="form-row">
-				                <div class="col-md-6">
+				                <div class="col-md-3">
 				                  <div class="form-label-group">
 				                    <input type="date" id="inputPassword" class="form-control" placeholder="Fecha" required="required" name="fecha" value="<?= date( "Y-m-d", strtotime( $evento->fecha ) ); ?>" >
 				                    <label for="inputPassword">Fecha</label>
 				                  </div>
 				                </div>
-				                <div class="col-md-6">
+				                <div class="col-md-3">
 				                  <div class="form-label-group">
 				                    <input type="time" id="inputPassword" class="form-control" placeholder="Hora" required="required" name="hora" value="<?= date( "H:m", strtotime( $evento->fecha ) ); ?>" >
 				                    <label for="inputPassword">Hora</label>
 				                  </div>
 				                </div>
+						<div class="col-md-6">
+					                  <div class="form-label-group">
+					                    <input type="text" id="inputPassword" class="form-control" placeholder="Tipo" required="required" name="tipo" value="<?= $evento->tipo ?>">
+					                    <label for="inputPassword">Tipo</label>
+					                  </div>
+					                </div>
 				              </div>
 				            </div>
 				            <div class="form-group">

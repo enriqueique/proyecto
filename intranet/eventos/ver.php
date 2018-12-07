@@ -46,16 +46,22 @@
 					            </div>
 					            <div class="form-group">
 					              <div class="form-row">
-					                <div class="col-md-6">
+					                <div class="col-md-3">
 					                  <div class="form-label-group">
 					                    <input type="date" id="inputPassword" class="form-control" placeholder="Fecha" required="required" name="fecha" value="<?= date( "Y-m-d", strtotime( $evento->fecha ) ); ?>" readonly>
 					                    <label for="inputPassword">Fecha</label>
 					                  </div>
 					                </div>
-					                <div class="col-md-6">
+					                <div class="col-md-3">
 					                  <div class="form-label-group">
 					                    <input type="time" id="inputPassword" class="form-control" placeholder="Hora" required="required" name="hora" value="<?= date( "H:m", strtotime( $evento->fecha ) ); ?>" readonly>
 					                    <label for="inputPassword">Hora</label>
+					                  </div>
+					                </div>
+							 <div class="col-md-6">
+					                  <div class="form-label-group">
+					                    <input type="text" id="inputPassword" class="form-control" placeholder="Tipo" required="required" name="fecha" value="<?= $evento->tipo ?>" readonly>
+					                    <label for="inputPassword">Tipo</label>
 					                  </div>
 					                </div>
 					              </div>

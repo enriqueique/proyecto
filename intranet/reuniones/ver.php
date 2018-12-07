@@ -29,13 +29,18 @@
 				        	<form>
 					            <div class="form-group">
 					              <div class="form-row">
-					                <div class="col-md-12">
+					                <div class="col-md-6">
 					                  <div class="form-label-group">
 					                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="nombre" value="<?= $reunion->nombre ?>" readonly>
 					                    <label for="firstName">Nombre</label>
 					                  </div>
 					                </div>
-					               
+					               <div class="col-md-6">
+					                  <div class="form-label-group">
+					                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="tipo" value="<?= $reunion->tipo ?>" readonly>
+					                    <label for="firstName">Tipo</label>
+					                  </div>
+					                </div>
 					              </div>
 					            </div>
 					            <div class="form-group">

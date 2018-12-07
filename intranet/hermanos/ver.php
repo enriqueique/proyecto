@@ -5,6 +5,8 @@
 		$verHermano = $hermanos->edit($_GET['id']);
 	?>
 
+	<?php $editarHermano = $hermanos->edit($_GET['id']); ?>
+
 	<?php include ('../header.php'); ?> 
 				
 		<div class="container">

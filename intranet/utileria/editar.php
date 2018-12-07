@@ -25,32 +25,27 @@
 		        <div class="card-body">
 		          <form action="editar.php?id=<?= $_GET['id'] ?>" method="POST">
 		            <div class="form-group">
-		              <div class="form-row">
-		                <div class="col-md-6">
-		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="nombre" value="<?= $editarUtileria[0]['nombre'] ?>">
-		                    <label for="firstName">Nombre</label>
-		                  </div>
-		                </div>
-		              </div>
-		            </div>
-		            <div class="form-group">
-		              <div class="form-row">
-		                <div class="col-md-6">
-		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="Cantidad" name="cantidad" value="<?= $editarUtileria[0]['cantidad'] ?>">
-		                    <label for="firstName">Cantidad</label>
-		                  </div>
-		                </div>
-		                <div class="col-md-6">
-		                  <div class="form-label-group">
-		                    <input type="text" id="firstName" class="form-control" placeholder="Estado" required="required" name="estado" value="<?= $editarUtileria[0]['estado'] ?>">
-		                    <label for="firstName">Estado</label>
-		                  </div>
-		                </div>
-		              </div>
-                    </div>                   
-		            
+	              <div class="form-row">
+	                <div class="col-md-6">
+	                  <div class="form-label-group">
+	                    <input type="text" id="firstName" class="form-control" placeholder="nombre" required="required" autofocus="autofocus" name="nombre" value="<?= $editarUtileria[0]['nombre'] ?>">
+	                    <label for="firstname">Nombre</label>
+	                  </div>
+	                </div>
+	                <div class="col-md-6">
+	                  <div class="form-label-group">
+	                    <input type="text" id="lastName" class="form-control" placeholder="cantidad" required="required" name="cantidad" value="<?= $editarUtileria[0]['cantidad'] ?>">
+	                    <label for="lastName">Cantidad</label>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	            <div class="form-group">
+	              <div class="form-label-group">
+	                 <input type="text" id="inputEmail" class="form-control" placeholder="Estado" required="required" name="estado" value="<?= $editarUtileria[0]['estado'] ?>">
+	                    <label for="inputEmail">Estado</label>
+	              </div>
+	            </div>
 		            <a class="btn btn-secondary" href="javascript:history.back(-1);">Atrás</a>
 		            <input type="submit" name="submit" class="btn btn-primary" value="Actualizar">  
 		          </form>

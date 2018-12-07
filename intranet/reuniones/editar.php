@@ -29,7 +29,7 @@
 				          <form action="editar.php?id=<?= $_GET['id'] ?>" method="POST">
 				            <div class="form-group">
 				              	<div class="form-row">
-				                	<div class="col-md-6">
+				                 <div class="col-md-6">
 				                  <div class="form-label-group">
 				                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="nombre" value="<?= $reunion->nombre ?>" >
 				                    <label for="firstName">Nombre</label>

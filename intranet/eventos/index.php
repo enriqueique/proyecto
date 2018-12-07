@@ -39,6 +39,7 @@ ini_set('display_errors', '1');
                       <th>Dirección</th>
                       <th>Fecha</th>
                       <th>Hora</th>
+		      <th>Tipo</th>
                       <th>Asistencia</th>
                       <th>Acciones</th>
                     </tr>
@@ -49,6 +50,7 @@ ini_set('display_errors', '1');
                       <th>Dirección</th>
                       <th>Fecha</th>
                       <th>Hora</th>
+		      <th>Tipo</th>
                       <th>Asistencia</th>
                       <th>Acciones</th>
                     </tr>
@@ -60,6 +62,7 @@ ini_set('display_errors', '1');
                             <td><?= $evento['direccion'] ?></td>
                             <td><?= date( "Y-m-d", strtotime( $evento['fecha'] ) ); ?></td>
                             <td><?= date( "H:m", strtotime( $evento['fecha'] ) ); ?></td>
+			    <td><?= $evento['tipo'] ?></td>
                             <td>
                               <?php if ($evento['asistencia'] == 0 ) : ?>
                                 <button class="btn btn-danger btn-sm">Sin asistencias</button>
@@ -113,28 +116,34 @@ ini_set('display_errors', '1');
                             <label for="firstName">Nombre</label>
                           </div>
                           </div>
-                          <div class="col-md-6">
+                           <div class="col-md-6">
                           <div class="form-label-group">
-                            <input type="text" id="lastName" class="form-control" placeholder="Dirección" required="required" name="direccion" value="" >
-                            <label for="lastName">Dirección</label>
+                            <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="direccion" value="" >
+                            <label for="firstName">Dirección</label>
                           </div>
                           </div>
                         </div>
                     </div>
                     <div class="form-group">
                       <div class="form-row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                           <div class="form-label-group">
                             <input type="date" id="inputPassword" class="form-control" placeholder="Fecha" required="required" name="fecha" value="" >
                             <label for="inputPassword">Fecha</label>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                           <div class="form-label-group">
                             <input type="time" id="inputPassword" class="form-control" placeholder="Hora" required="required" name="hora" value="" >
                             <label for="inputPassword">Hora</label>
                           </div>
                         </div>
+                       <div class="col-md-6">
+                          <div class="form-label-group">
+                            <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="tipo" value="" >
+                            <label for="firstName">Tipo</label>
+                          </div>
+                          </div>
                       </div>
                     </div>
                     <div class="form-group">
@@ -145,7 +154,7 @@ ini_set('display_errors', '1');
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('agregarHermano').submit();">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('agregarEvento').submit();">Guardar</button>
               </div>
             </div>
           </div>

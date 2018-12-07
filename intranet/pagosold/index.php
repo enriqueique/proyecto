@@ -1,19 +1,16 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-?>
 <?php 
-  require "clases/pagosHermanos.php"; 
-  $allPagos = new PagosHermanos();
+  require "clases/pagos.php"; 
+  $pago = new Pagos();
 ?>
 
 <?php if (!isset($_POST['concepto'])): ?>
 
   <?php include ('../header.php'); ?> 
-      <?php $pagos = $allPagos->index(); ?>
+      <?php $pagosdatos = $pago->index(); ?>
+
       <div id="content-wrapper">
 
-        <div class="container-fluid mb-3">
+        <div class="container-fluid">
 
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -23,10 +20,10 @@ ini_set('display_errors', '1');
           </ol>
 
           <!-- DataTables Example -->
-          <div class="card">
+          <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Todos los Pagos</div>
+              Registro de Pagos</div>
             <div class="card-body">
               <button style="margin-bottom: 10px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 <i class="fa fa-plus"></i> Nuevo Pago
@@ -37,8 +34,7 @@ ini_set('display_errors', '1');
                     <tr>
                       <th>Concepto</th>
                       <th>Fecha</th>
-		      <th>Importe</th>
-		      <th>Pagos</th>
+                      <th>Importe</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -46,24 +42,17 @@ ini_set('display_errors', '1');
                     <tr>
                       <th>Concepto</th>
                       <th>Fecha</th>
-		      <th>Importe</th>
-                      <th>Pagos</th>
+                      <th>Importe</th>
                       <th>Acciones</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <?php foreach ($pagos as $pago): ?>
+                    <?php foreach ($pagosdatos as $pago): ?>
                         <tr>
                             <td><?= $pago['concepto'] ?></td>
                             <td><?= $pago['fecha'] ?></td>
-			    <td><?= $pago['importe'] ?></td>
-                            <td>
-                              <?php if ($pago['pago'] == 0 ) : ?>
-                                <button class="btn btn-danger btn-sm">Sin asistencias</button>
-                              <?php else: ?>
-                                <button class="btn btn-primary btn-sm hermanos" data-id="<?= $pago['id'] ?>"><?= $pago['pago'] ?> pago</button>
-                              <?php endif ?>
-                            </td>
+                            <td><?= $pago['importe'] ?></td>
+                            
                             <td>
                               <a href="ver.php?id=<?= $pago['id'] ?>">
                                   <span>ver</span>
@@ -84,9 +73,6 @@ ini_set('display_errors', '1');
               </div>
             </div>
           </div>
-          <!-- DataTables Example -->
-        </div>
-
         </div>
         <!-- /.container-fluid -->
         
@@ -101,34 +87,30 @@ ini_set('display_errors', '1');
                 </button>
               </div>
               <div class="modal-body">
-                <form action="index.php" method="POST" id="agregarPago" class="formulariomodal">
-                    <div class="form-group">
-                        <div class="form-row">
-                          <div class="col-md-6">
-                          <div class="form-label-group">
-                            <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="concepto" value="" >
-                            <label for="firstName">Concepto</label>
-                          </div>
-                          </div>
-                           <div class="col-md-6">
-                          <div class="form-label-group">
-                            <input type="date" id="firstName" class="form-control" placeholder="Fecha" required="required" autofocus="autofocus" name="fecha" value="" >
-                            <label for="firstName">Fecha</label>
-                          </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="form-row">
-                        <div class="col-md-12">
-                          <div class="form-label-group">
-                            <input type="double" id="inputPassword" class="form-control" placeholder="Importe" required="required" name="importe" value="" >
-                            <label for="inputPassword">Importe</label>
+                      <form action="index.php" method="POST" id="agregarPago">
+                        <div class="form-group">
+                          <div class="form-row">
+                            <div class="col-md-6">
+                              <div class="form-label-group">
+                                <input type="text" id="firstName" class="form-control" placeholder="Ingresa Concepto" required="required" autofocus="autofocus" name="concepto">
+                                <label for="firstName">Concepto</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-label-group">
+                                <input type="date" id="lastName" class="form-control" placeholder="Ingresa Fecha" name="fecha">
+                                <label for="lastName">Fecha</label>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                </form>
+                        <div class="form-group">
+                          <div class="form-label-group">
+                             <input type="double" id="lastName" class="form-control" placeholder="Ingresa Importe" required="required" name="importe">
+                                <label for="lastName">Importe</label>
+                          </div>
+                        </div>
+                      </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -137,12 +119,12 @@ ini_set('display_errors', '1');
             </div>
           </div>
         </div>
-<!-- LLAMAREMOS MEDIANTE AJAX A LOS USUARIOS QUE TIENEN EN LA BASE DE DATOS PARA ESE EVENTO -->
+
   <?php include ('../footer.php'); ?> 
 
 <?php else: ?>
-
-  <?php $allPagos->add($_POST); ?>
+          
+  <?php $pago->add($_POST); ?>
 
 <?php endif ?>
 
