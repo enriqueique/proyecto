@@ -59,8 +59,16 @@
 				                </div>
 						<div class="col-md-6">
 					                  <div class="form-label-group">
-					                    <input type="text" id="inputPassword" class="form-control" placeholder="Tipo" required="required" name="tipo" value="<?= $evento->tipo ?>">
-					                    <label for="inputPassword">Tipo</label>
+					                    <select id="inputEmail" class="form-control" placeholder="Tipo" required="required" name="tipo">
+			   <option>Semana Santa</option>
+			   <option>Reunión Informativa</option>
+			   <option>Convivencia</option>
+			   <option>Conferencia</option>
+			   <option>Procesión</option>
+			   <option>Asuntos Internos</option>
+			   <option>Ensayos Banda</option>
+			   <option>Otro</option>					
+			</select>
 					                  </div>
 					                </div>
 				              </div>

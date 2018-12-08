@@ -112,8 +112,15 @@
                           <div class="form-row">
                             <div class="col-md-6">
                               <div class="form-label-group">
-                              <input type="text" id="lastName" class="form-control" placeholder="Ingresa Estado" name="estado">
-                                <label for="estado">Estado</label>
+                             <!-- <input type="text" id="lastName" class="form-control" placeholder="Ingresa Estado" name="estado">
+                                <label for="estado">Estado</label> -->
+				<select id="sel1" class="form-control" placeholder="Estado" required="required" name="estado">
+			   <option>-- Seleccione Estado --</option>
+			   <option>Buen Estado</option>
+			   <option>En Mantenimiento</option>
+			   <option>En Revisión</option>
+			   <option>En Reparación</option>					
+			</select>
                               </div>
                             </div>
 			<div class="col-md-6">

@@ -38,7 +38,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php">Panel</a>
+      <a class="navbar-brand mr-1" href="<?= $base_url ?>/index.php">Salir de Administración</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -76,7 +76,7 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav toggled">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Panel</span>
           </a>

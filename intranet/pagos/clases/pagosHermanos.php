@@ -69,9 +69,9 @@ class PagosHermanos extends Pagos {
 	public function getHermanos($pago){
 		$idPago = $pago['pago'];
 		if ($pago['tipo'] == 'addHermanos') {
-			$consulta = "SELECT * FROM hermanos WHERE NOT EXISTS (SELECT NULL FROM he_pa WHERE pago = hermanos.id AND pago = $idPago)";
+			$consulta = "SELECT * FROM hermanos WHERE NOT EXISTS (SELECT NULL FROM he_pa WHERE hermano = hermanos.id AND pago = $idPago)";
 		}else{
-			$consulta = "SELECT hermanos.* FROM hermanos JOIN he_pa ON he_pa.pago = hermanos.id WHERE he_pa.pago = $idPago GROUP BY hermanos.id";
+			$consulta = "SELECT hermanos.* FROM hermanos JOIN he_pa ON he_pa.hermano = hermanos.id WHERE he_pa.pago = $idPago GROUP BY hermanos.id";
 		}
 
 		$resultado = $this->conexion_db->query($consulta);
@@ -80,14 +80,15 @@ class PagosHermanos extends Pagos {
 
 	}
 
+
 	public function deleteHermano($pago, $hermano){
-		$consulta = "DELETE FROM he_pa WHERE pago = $pago AND asistencia = $hermano";
+		$consulta = "DELETE FROM he_pa WHERE pago = $pago AND hermano = $hermano";
 		$resultado = $this->conexion_db->query($consulta);
 	}
 
 	public function addHermanos($pago, $hermanos){
 		foreach ($hermanos['addAsistencia'] as $asistencia) {
-			$consulta = "INSERT INTO he_pa (pago, asistencia) VALUES " . "(" . $pago . "," . $asistencia . ")";
+			$consulta = "INSERT INTO he_pa (pago, hermano) VALUES " . "(" . $pago . "," . $asistencia . ")";
 			$resultado = $this->conexion_db->query($consulta);
 
 			if(!$resultado){
@@ -102,4 +103,3 @@ class PagosHermanos extends Pagos {
 	
 }
 ?>
-

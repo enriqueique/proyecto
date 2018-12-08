@@ -1,14 +1,14 @@
 	<?php
-	require("clases/pagosHermanos.php");
-	$pago = new PagosHermanos();
+	require("clases/eventosHermanos.php");
+	$evento = new EventosHermanos();
 	?>
 
 	<?php if (isset($_POST['hermano'])): ?>
 
-			<?php $pago-> deleteHermano($_POST['pago'], $_POST['hermano']); ?>
+			<?php $evento-> deleteHermano($_POST['evento'], $_POST['hermano']); ?>
 
-	<?php elseif (isset($_POST['pago'])): ?>
+	<?php elseif (isset($_POST['evento'])): ?>
 
-			<?php $pago->getHermanos($_POST); ?>
+			<?php $evento->getHermanos($_POST); ?>
 		
 	<?php endif ?>

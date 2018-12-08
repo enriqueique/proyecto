@@ -140,8 +140,16 @@ ini_set('display_errors', '1');
                         </div>
                        <div class="col-md-6">
                           <div class="form-label-group">
-                            <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="tipo" value="" >
-                            <label for="firstName">Tipo</label>
+                            <select id="inputEmail" class="form-control" placeholder="Tipo" required="required" name="tipo">
+			   <option>Semana Santa</option>
+			   <option>Reunión Informativa</option>
+			   <option>Convivencia</option>
+			   <option>Conferencia</option>
+			   <option>Procesión</option>
+			   <option>Asuntos Internos</option>
+			   <option>Ensayo Banda</option>	
+			   <option>Otro</option>				
+			</select>
                           </div>
                           </div>
                       </div>

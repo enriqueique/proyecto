@@ -42,8 +42,13 @@
 	            </div>
 	            <div class="form-group">
 	              <div class="form-label-group">
-	                 <input type="text" id="inputEmail" class="form-control" placeholder="Estado" required="required" name="estado" value="<?= $editarUtileria[0]['estado'] ?>">
-	                    <label for="inputEmail">Estado</label>
+	                     
+			<select id="inputEmail" class="form-control" placeholder="Estado" required="required" name="estado">
+			   <option>Buen Estado</option>
+			   <option>En Mantenimiento</option>
+			   <option>En Revisión</option>
+			   <option>En Reparación</option>					
+			</select>
 	              </div>
 	            </div>
 		            <a class="btn btn-secondary" href="javascript:history.back(-1);">Atrás</a>

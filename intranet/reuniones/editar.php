@@ -37,8 +37,18 @@
 				                </div>	
 						<div class="col-md-6">
 				                  <div class="form-label-group">
-				                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus" name="tipo" value="<?= $reunion->tipo ?>" >
-				                    <label for="firstName">Tipo</label>
+				                    <select id="inputEmail" class="form-control" placeholder="Tipo" required="required" name="tipo">
+			   <option>Semana Santa</option>
+			   <option>Administración</option>
+			   <option>Decoración</option>
+			   <option>Cultos Externos</option>
+			   <option>Cultos Internos</option>
+			   <option>Relaciones Públicas</option>
+			   <option>Asuntos Internos</option>
+			   <option>Caridad</option>
+			   <option>Banda</option>
+			   <option>Otro</option>					
+			</select>
 				                  </div>
 				                	</div>
 
