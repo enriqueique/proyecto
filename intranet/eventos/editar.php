@@ -59,16 +59,15 @@
 				                </div>
 						<div class="col-md-6">
 					                  <div class="form-label-group">
-					                    <select id="inputEmail" class="form-control" placeholder="Tipo" required="required" name="tipo">
-			   <option>Semana Santa</option>
-			   <option>Reunión Informativa</option>
-			   <option>Convivencia</option>
-			   <option>Conferencia</option>
-			   <option>Procesión</option>
-			   <option>Asuntos Internos</option>
-			   <option>Ensayos Banda</option>
-			   <option>Otro</option>					
-			</select>
+                                                                              
+                                      <?php $tipos = ['Semana Santa', 'Reunión Informativa','Convivencia', 'Conferencia', 'Procesión', 'Asuntos Internos', 'Ensayos Banda', 'Otros']; ?>
+				                    <select id="inputEmail" class="form-control" placeholder="Tipo" required="required" name="tipo">
+                                    
+                                    <?php foreach ($tipos as $tipo){ ?>
+                                       <option <?= ($evento->tipo == $tipo) ? 'selected' : ''?> ><?= $tipo ?></option>
+                                    <?php } ?>
+                                        
+                                    </select>
 					                  </div>
 					                </div>
 				              </div>

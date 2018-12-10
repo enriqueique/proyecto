@@ -63,7 +63,7 @@
         <div class="container">
           <h1 class="masthead-heading mb-0">Semana Santa</h1>
           <h2 class="masthead-subheading mb-0">en Sevilla</h2>
-          <a href="#eventos" class="btn btn-info btn-xl rounded-pill mt-5">Eventos</a>
+          <a href="#eventos" class="btn btn-info btn-xl rounded-pill mt-5">Acciones</a>
         </div>
       </div>
       <!--
@@ -83,8 +83,8 @@
           </div>
           <div class="col-lg-6 order-lg-1">
             <div class="p-5">
-              <h2 class="display-4">Ejemplo de Contenido</h2>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+              <h2 class="display-4">Eventos</h2>
+              <p>¿Harto de acudir al tablón de anuncios? Toda la información necesaria plasmada telemáticamente. En la palma de la mano y al momento disponible toda la información necesaria de los eventos organizados por la Hermandad, entra y ¡apúntate!</p>
             </div>
           </div>
         </div>
@@ -101,8 +101,8 @@
           </div>
           <div class="col-lg-6">
             <div class="p-5">
-              <h2 class="display-4">Ejemplo de Contenido</h2>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+              <h2 class="display-4">Reuniones</h2>
+              <p>¿El último en enterarte de todo? Aquí dispones de toda la información necesaria sobre las reuniones del equipo de gobierno, con las conclusiones de todas las actas de cada una de ellas sin la necesidad de tener que desplazarte.</p>
             </div>
           </div>
         </div>
@@ -119,8 +119,8 @@
           </div>
           <div class="col-lg-6 order-lg-1">
             <div class="p-5">
-              <h2 class="display-4">Ejemplo de Contenido</h2>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+              <h2 class="display-4">Pagos</h2>
+              <p>¿Harto de tener que acudir a la sede para cumplir con los pagos anuales, que te inviten a merendar para que te cuenten la campaña de donaciones? Pues, vas a tener que seguir haciéndolo, de momento no hemos conseguido que se realicen telemáticamente, pero podrás acceder a los pagos que hayas realizado y comprobar que dinero va a donde.</p>
             </div>
           </div>
         </div>

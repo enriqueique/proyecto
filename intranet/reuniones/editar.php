@@ -37,18 +37,15 @@
 				                </div>	
 						<div class="col-md-6">
 				                  <div class="form-label-group">
+                                    
+                                      <?php $tipos = ['Semana Santa', 'Administración','Decoración', 'Cultos Externos', 'Cultos Internos', 'Relaciones Públicas', 'Asuntos Internos', 'Caridad', 'Banda', 'Otros']; ?>
 				                    <select id="inputEmail" class="form-control" placeholder="Tipo" required="required" name="tipo">
-			   <option>Semana Santa</option>
-			   <option>Administración</option>
-			   <option>Decoración</option>
-			   <option>Cultos Externos</option>
-			   <option>Cultos Internos</option>
-			   <option>Relaciones Públicas</option>
-			   <option>Asuntos Internos</option>
-			   <option>Caridad</option>
-			   <option>Banda</option>
-			   <option>Otro</option>					
-			</select>
+                                    
+                                    <?php foreach ($tipos as $tipo){ ?>
+                                       <option <?= ($reunion->tipo == $tipo) ? 'selected' : ''?> ><?= $tipo ?></option>
+                                    <?php } ?>
+                                        
+                                    </select>
 				                  </div>
 				                	</div>
 
@@ -72,7 +69,9 @@
 				            </div>
 				            <div class="form-group">
 							    <label for="exampleFormControlSelect1">Descripción</label>
-							    <textarea  class="form-control" name="observaciones" placeholder="Escribe aquí ..." rows="8" value=""><?= $reunion->observaciones ?></textarea>
+							    <textarea class="form-control" name="observaciones" placeholder="Escribe aquí ..." rows="8" value="">
+                                    <?= $reunion->observaciones ?>  
+                                </textarea>
 							</div>
 					            <a class="btn btn-secondary" href="javascript:history.back(-1);">Atrás</a>
 					            <input type="submit" name="submit" class="btn btn-primary" value="Actualizar">  
@@ -82,7 +81,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mx-auto">
-				        <div class="card-header d-flex justify-content-between align-items-center"><span><i class="fa fa-users fa-lg"></i> Asistencia</span> <button class="btn btn-primary btn-sm" data-toggle="modal" id="addHermanos" data-target="#exampleModalCenter"><i class="fa fa-plus"></i> Añadir</span></div>
+				        <div class="card-header d-flex justify-content-between align-items-center"><span><i class="fa fa-users fa-lg"></i> Asistencia</span> <button class="btn btn-primary btn-sm" data-toggle="modal" id="addHermanos" data-target="#exampleModalCenter"><i class="fa fa-plus"></i> Añadir</button></div>
 				        <div class="card-body">
 
 							<table class="table table-hover">

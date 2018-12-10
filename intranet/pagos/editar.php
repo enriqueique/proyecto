@@ -61,7 +61,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mx-auto">
-				        <div class="card-header d-flex justify-content-between align-items-center"><span><i class="fa fa-users fa-lg"></i> Asistencia</span> <button class="btn btn-primary btn-sm" data-toggle="modal" id="addHermanos" data-target="#exampleModalCenter"><i class="fa fa-plus"></i> Añadir</span></div>
+				        <div class="card-header d-flex justify-content-between align-items-center"><span><i class="fa fa-users fa-lg"></i>Pagos Realizados</span> <button class="btn btn-primary btn-sm" data-toggle="modal" id="addHermanos" data-target="#exampleModalCenter"><i class="fa fa-plus"></i> Añadir</button></div>
 				        <div class="card-body">
 
 							<table class="table table-hover">

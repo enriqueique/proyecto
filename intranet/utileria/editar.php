@@ -42,12 +42,12 @@
 	            </div>
 	            <div class="form-group">
 	              <div class="form-label-group">
-	                     
+	           <?php $estados = ['Buen Estado','En Mantenimiento', 'En Revisión', 'En Reparación'] ?>         
 			<select id="inputEmail" class="form-control" placeholder="Estado" required="required" name="estado">
-			   <option>Buen Estado</option>
-			   <option>En Mantenimiento</option>
-			   <option>En Revisión</option>
-			   <option>En Reparación</option>					
+                <?php foreach ($estados as $estado) { ?>
+                
+                    <option  <?= ($editarUtileria[0]['estado'] == $estado) ? 'selected' : '' ?>><?= $estado ?></option>
+                <?php } ?>
 			</select>
 	              </div>
 	            </div>

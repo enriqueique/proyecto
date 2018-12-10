@@ -56,10 +56,10 @@ ini_set('display_errors', '1');
                         <tr>
                             <td><?= $pago['concepto'] ?></td>
                             <td><?= $pago['fecha'] ?></td>
-			    <td><?= $pago['importe'] ?></td>
+			    <td>€ <?= $pago['importe'] ?></td>
                             <td>
                               <?php if ($pago['pago'] == 0 ) : ?>
-                                <button class="btn btn-danger btn-sm">Sin asistencias</button>
+                                <button class="btn btn-danger btn-sm">Sin pagos</button>
                               <?php else: ?>
                                 <button class="btn btn-primary btn-sm hermanos" data-id="<?= $pago['id'] ?>"><?= $pago['pago'] ?> pago</button>
                               <?php endif ?>

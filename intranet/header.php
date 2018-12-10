@@ -1,4 +1,4 @@
-<?php $base_url = "http://localhost/php"; ?>
+<?php $base_url = "AÑADE TU URL PRINCIPAL AQUI"; ?>
 <?php session_start(); ?>
 <?php if (!isset($_SESSION['user'])): ?>
   <?php header("Location: $base_url/login") ?>
