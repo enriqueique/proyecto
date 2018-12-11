@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php 
+require 'clases/principal.php';
+$allPagos = new Principal();
+$pagos = $allPagos->pagos();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,57 +73,55 @@
       </div>
     </header>
 
-    <section id="eventos">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 order-lg-2">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://blackrockdigital.github.io/startbootstrap-one-page-wonder/img/01.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="p-5">
-              <h2 class="display-4">Eventos</h2>
-              <p>¿Harto de acudir al tablón de anuncios? Toda la información necesaria plasmada telemáticamente. En la palma de la mano y al momento disponible toda la información necesaria de los eventos organizados por la Hermandad, entra y ¡apúntate!</p>
-                <a href="eventos.php" class="btn btn-info btn-xl rounded-pill mt-5">Ver Eventos</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section>
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://blackrockdigital.github.io/startbootstrap-one-page-wonder/img/02.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <h2 class="display-4">Reuniones</h2>
-              <p>¿El último en enterarte de todo? Aquí dispones de toda la información necesaria sobre las reuniones del equipo de gobierno, con las conclusiones de todas las actas de cada una de ellas sin la necesidad de tener que desplazarte.</p>
-                <a href="reuniones.php" class="btn btn-info btn-xl rounded-pill mt-5">Ver Reuniones</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 order-lg-2">
-            <div class="p-5">
+          <div class="col-lg-3 order-lg-2">
+            <div class="p-0">
               <img class="img-fluid rounded-circle" src="https://blackrockdigital.github.io/startbootstrap-one-page-wonder/img/03.jpg" alt="">
             </div>
           </div>
-          <div class="col-lg-6 order-lg-1">
+          <div class="col-lg-9 order-lg-1">
             <div class="p-5">
               <h2 class="display-4">Pagos</h2>
-              <p>¿Harto de tener que acudir a la sede para cumplir con los pagos anuales, que te inviten a merendar para que te cuenten la campaña de donaciones? Pues, vas a tener que seguir haciéndolo, de momento no hemos conseguido que se realicen telemáticamente, pero podrás acceder a los pagos que hayas realizado y comprobar que dinero va a donde.</p>
-                <a href="pagos.php" class="btn btn-info btn-xl rounded-pill mt-5">Ver Pagos</a>
+              <table class="table">
+                    <thead class="table-dark">
+                        <tr><td>Concepto</td>
+                        <td>Fecha</td>
+                        <td>Importe</td>
+			            <td>Pagar</td></tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($pagos as $pago) { ?>
+                            <tr><td><?= $pago["concepto"] ?></td>
+                            <td><?= $pago['fecha'] ?></td>
+                            <td><?= $pago['importe'] ?></td>
+                               <?php 
+                                $usuario = $_SESSION['userId'];
+                                $pag = $pago['id'];
+                                $confirmar = 'confirmar';
+                                $existe = $allPagos->checkPago($usuario, $pago['id']);
+                                ?>
+                                <td>
+                                    <?php if ($existe != 0 ): ?>
+                                        <button class="btn btn-secondary">Confirmado</button>
+                                    <?php else: ?>
+                                        <a class="btn btn-primary" href="pagos.php?asistencia=<?= $usuario.'&pag='.$pag.'&confirmar='.$confirmar ?>">Confirmar</a>
+                                    <?php endif ?>
+                                    
+                                </td>
+                            </tr>
+                        <?php } ?>
+                     
+                    </tbody>
+                    <tfoot class="table-dark">
+                        <tr><td>Concepto</td>
+                        <td>Fecha</td>
+                        <td>Importe</td>
+			<td>Pagar</td></tr>
+                    </tfoot>
+                </table>
+                <a href="index.php" class="btn btn-info btn-xl rounded-pill mt-5">Atrás</a>
             </div>
           </div>
         </div>
@@ -140,3 +143,13 @@
   </body>
 
 </html>
+
+
+<?php if(isset($_GET['confirmar'])): ?>
+    
+    <?php  $allPagos->pagos($_GET);  ?>
+    <script>
+        window.location.href = "pagos.php";
+    </script>
+
+<?php endif ?>
