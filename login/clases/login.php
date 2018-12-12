@@ -15,10 +15,11 @@ class Login extends Conexion {
 			if($this->verifyPassword($checkEmail, $user['password'])){
 				// Si el usuario es el correcto creamos los parametros para la sesion y ledejamos entrar a la intranet.
 				session_start();
+                $_SESSION['userId'] = $checkEmail->id;
 				$_SESSION['user'] = $checkEmail->nombre;
 				$_SESSION['rol'] = $checkEmail->rol;
 
-				header("Location: ../intranet");
+				header("Location: ../");
 			}else{
 				// Si la contraseña es erronea notifica al usuario
 				return "La <strong>contraseña</strong> es incorrecta.";
@@ -60,6 +61,35 @@ class Login extends Conexion {
 		return true;
 
 	}
+
+	public function register($hermano){
+
+		$hermano['password'] = password_hash($hermano['password'], PASSWORD_DEFAULT);		
+		$columns = implode("," , array_keys($hermano));
+		$values = "'".implode("','" , $hermano)."'";
+		
+        if($this->checkUser($hermano['email']) == false){
+            $consulta = "INSERT INTO hermanos ($columns) VALUES ($values)"; 
+            $resultado = $this->conexion_db->query($consulta);
+            
+            if(!$resultado){
+                return false;
+            }
+            session_start();
+            $_SESSION['userId'] = $this->conexion_db->insert_id;
+            $_SESSION['user'] = $hermano['nombre'];
+            $_SESSION['rol'] = 3;
+        
+            header("Location: ../");
+
+        }else{
+            
+            return "El email ya existe en nuestra base de datos, escribe otro.";
+            
+        }
+	
+	}
+
 	
 }
 

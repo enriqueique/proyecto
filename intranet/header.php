@@ -1,8 +1,4 @@
 <?php $base_url = "AÑADE TU URL PRINCIPAL AQUI"; ?>
-<?php session_start(); ?>
-<?php if (!isset($_SESSION['user'])): ?>
-  <?php header("Location: $base_url/login") ?>
-<?php endif ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -63,7 +59,6 @@
             <i class="fas fa-user-circle fa-fw fa-2x"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Ajustes</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sesión</a>
           </div>

@@ -36,7 +36,9 @@ $pagos = $allPagos->pagos();
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
       <div class="container">
         
-        <a class="navbar-brand" href="#">Hermandad Sanepita</a>
+                <?php if (isset($_SESSION['user'])): ?>
+
+        <a class="navbar-brand" href="pagos.php">Bienvenido <?= $_SESSION['user'] ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,17 +47,27 @@ $pagos = $allPagos->pagos();
             <!--<li class="nav-item">
               <a class="nav-link" href="#">Registrarse</a>
             </li>-->
-            <?php if (isset($_SESSION['user'])): ?>
+            
+            <?php if($_SESSION['rol'] == 1 ): ?>
             <li class="nav-item">
               <a class="nav-link" href="intranet/">Intranet</a>
             </li>
+            <?php endif ?>
             <li class="nav-item">
               <a class="nav-link" href="login/logout.php">Cerrar Sesión <i class="fa fa-sign-out"></i></a>
             </li>
             <?php else: ?>
-            <li class="nav-item">
-                <a class="nav-link" href="login/">Iniciar Sesión <i class="fa fa-sign-in"></i></a>
-            </li>
+ 		<a class="navbar-brand" href="pagos.php">Hermandad Sanepita</a>
+        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         	 <span class="navbar-toggler-icon"></span>
+        	</button>
+        	<div class="collapse navbar-collapse" id="navbarResponsive">
+          		<ul class="navbar-nav ml-auto">
+            		<li class="nav-item">
+               	 <a class="nav-link" href="login/">Iniciar Sesión <i class="fa fa-sign-in"></i></a>
+            	</li>
+            	</ul>
+              </div>
             <?php endif ?>
             
           </ul>
@@ -63,12 +75,12 @@ $pagos = $allPagos->pagos();
       </div>
     </nav>
 
-    <header class="masthead text-center text-white" style="background: url('https://66.media.tumblr.com/013d0420386ab6a99adde4a16bd01a46/tumblr_nm8uxhe5iA1rf9hn3o1_1280.jpg') no-repeat; background-size:cover;background-position: bottom;">
+    <header class="masthead text-center text-white" style="background: url('assets/img/img5.jpg') no-repeat; background-size:cover;background-position: bottom;">
       <div class="masthead-content">
         <div class="container">
           <h1 class="masthead-heading mb-0">Semana Santa</h1>
           <h2 class="masthead-subheading mb-0">en Sevilla</h2>
-          <a href="#eventos" class="btn btn-info btn-xl rounded-pill mt-5">Acciones</a>
+          <a href="index.php" class="btn btn-info btn-xl rounded-pill mt-5">Volver</a>
         </div>
       </div>
     </header>
@@ -78,12 +90,13 @@ $pagos = $allPagos->pagos();
         <div class="row align-items-center">
           <div class="col-lg-3 order-lg-2">
             <div class="p-0">
-              <img class="img-fluid rounded-circle" src="https://blackrockdigital.github.io/startbootstrap-one-page-wonder/img/03.jpg" alt="">
+              <img class="img-fluid rounded-circle" src="assets/img/num3.jpg" alt="">
             </div>
           </div>
           <div class="col-lg-9 order-lg-1">
             <div class="p-5">
               <h2 class="display-4">Pagos</h2>
+              <?php if(count($pagos) > 0): ?>
               <table class="table">
                     <thead class="table-dark">
                         <tr><td>Concepto</td>
@@ -121,6 +134,11 @@ $pagos = $allPagos->pagos();
 			<td>Pagar</td></tr>
                     </tfoot>
                 </table>
+                 <?php else: ?>
+                <div class="alert alert-info" role="alert">
+                  <strong>Lo siento.</strong> No hay Pagos disponibles en ese momento.
+                </div>
+              <?php endif ?>
                 <a href="index.php" class="btn btn-info btn-xl rounded-pill mt-5">Atrás</a>
             </div>
           </div>

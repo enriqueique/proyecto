@@ -1,13 +1,20 @@
 <?php
-
 // Archivo contenedor de funciones para pagos
 
 require ("../../conexion.php");
 
 class Pagos extends Conexion {
+    protected $rol;
 	public function __construct(){
 		parent::__construct();
+        $this->rol = $_SESSION['rol'];
+        
+        if($this->rol != '1' ){
+            echo "No tienes permisos para acceder a esa sección";
+            die();
+        }
 	}
+	
 	
 	public function getPagos(){
 		$consulta = "SELECT pagos.* , count(he_pa.pago) as pago FROM pagos LEFT JOIN he_pa ON he_pa.pago = pagos.id GROUP BY pagos.id";

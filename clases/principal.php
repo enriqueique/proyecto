@@ -33,7 +33,6 @@ Class Principal extends Conexion{
                 $resultado = $this->conexion_db->query($consulta);
                 if(!$resultado){
                     echo "error al agregarte al evento: ".$consulta;
-
                     die();
                 }
             }

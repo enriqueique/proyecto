@@ -1,14 +1,21 @@
 <?php
-
 // Archivo contenedor de funciones para eventos
-
 require ("../../conexion.php");
 
 class Eventos extends Conexion {
+    protected $rol;
 	public function __construct(){
 		parent::__construct();
+        $this->rol = $_SESSION['rol'];
+        
+        if($this->rol != '1' ){
+            echo "No tienes permisos para acceder a esa sección";
+            die();
+        }
 	}
 	
+    
+    
 	public function getEventos(){
 		$consulta = "SELECT eventos.* , count(he_ev.asistencia) as asistencia FROM eventos LEFT JOIN he_ev ON he_ev.evento = eventos.id GROUP BY eventos.id";
 		$resultado = $this->conexion_db->query($consulta);

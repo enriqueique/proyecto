@@ -1,4 +1,10 @@
 <?php
+// Contenedor de consultas, conexión a la bbdd
+session_start();
+
+if (!isset($_SESSION['user'])){
+    header("Location: ../../login");
+}
 
 // Archivo contenedor de funciones para 
 

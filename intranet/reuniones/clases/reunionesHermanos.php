@@ -1,4 +1,10 @@
 <?php
+// Contenedor de consultas, conexión a la bbdd
+session_start();
+
+if (!isset($_SESSION['user'])){
+    header("Location: ../../login");
+}
 
 // Crearemos un archivo de ejemplo para hacer uso del archivo de conexion y hacer una consulta donde devuelva los datos de un registros o todos los datos dependiendo el tipo de consulta que queramos hacer.
 

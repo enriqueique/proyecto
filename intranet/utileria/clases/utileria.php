@@ -1,13 +1,26 @@
 <?php
+// Contenedor de consultas, conexión a la bbdd
+session_start();
 
+if (!isset($_SESSION['user'])){
+    header("Location: ../../login");
+}
 // Archivo contenedor de funciones para posterior uso.
 
 require ("../../conexion.php");
 
 class Utileria extends Conexion {
+    protected $rol;
 	public function __construct(){
 		parent::__construct();
+        $this->rol = $_SESSION['rol'];
+        
+        if($this->rol != '1' ){
+            echo "No tienes permisos para acceder a esa sección";
+            die();
+        }
 	}
+	
 	
 	public function index(){
 		$consulta = "SELECT * FROM utileria";

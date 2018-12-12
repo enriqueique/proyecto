@@ -1,13 +1,20 @@
 <?php
-
 // Crearemos un archivo de ejemplo para hacer uso del archivo de conexion y hacer una consulta donde devuelva los datos de un registros o todos los datos dependiendo el tipo de consulta que queramos hacer.
 
 require ("../../conexion.php");
 
 class Reuniones extends Conexion {
+    protected $rol;
 	public function __construct(){
 		parent::__construct();
+        $this->rol = $_SESSION['rol'];
+        
+        if($this->rol != '1' ){
+            echo "No tienes permisos para acceder a esa sección";
+            die();
+        }
 	}
+	
 	
 	public function getReuniones(){
 		$consulta = "SELECT reuniones.* , count(he_re.participante) as asistencia FROM reuniones LEFT JOIN he_re ON he_re.reunion = reuniones.id GROUP BY reuniones.id";

@@ -29,7 +29,7 @@
 
         <div class="container">
           <div class="card card-login mx-auto mt-5" >
-            <div class="card-header">Iniciar Sesión</div>
+            <div class="card-header">Iniciar Sesión ----------        --------- <a href="../index.php">Continuar Sin Sesión</a></div>
             <div class="card-body">
 
               <?php if (isset($_POST['submit'])): ?>
@@ -60,7 +60,7 @@
                 <input type="submit" name="submit" class="btn btn-primary btn-block" value="Iniciar Sesión">
               </form>
               <div class="text-center">
-                <a class="d-block small mt-3" href="register.html">Registrar una Cuenta</a>
+                <a class="d-block small mt-3" href="register.php">Registrar una Cuenta</a>
               </div>
             </div>
           </div>
