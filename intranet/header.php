@@ -71,38 +71,38 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav toggled">
         <li class="nav-item">
-          <a class="nav-link" href="<?= $base_url ?>/intranet/index.php">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Panel</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= $base_url ?>/intranet/hermanos">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/hermanos/">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Hermanos</span></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= $base_url ?>/intranet/reuniones">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/reuniones/">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Reuniones</span></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= $base_url ?>/intranet/eventos">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/eventos/">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Eventos</span></a>
         </li>
 
 	<li class="nav-item">
-          <a class="nav-link" href="<?= $base_url ?>/intranet/pagos">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/pagos/">
             <i class="fas fa-fw fa-table"></i>
             <span>Pagos</span></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= $base_url ?>/intranet/utileria">
+          <a class="nav-link" href="<?= $base_url ?>/intranet/utileria/">
             <i class="fas fa-fw fa-table"></i>
             <span>Utileria</span></a>
         </li>

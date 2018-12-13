@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])){
 
 // Archivo contenedor de funciones para 
 
-require ("eventos.php");
+require ("clases/eventos.php");
 
 class EventosHermanos extends Eventos {
 	public function __construct(){

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])){
 
 // Crearemos un archivo de ejemplo para hacer uso del archivo de conexion y hacer una consulta donde devuelva los datos de un registros o todos los datos dependiendo el tipo de consulta que queramos hacer.
 
-require ("reuniones.php");
+require ("clases/reuniones.php");
 
 class ReunionesHermanos extends Reuniones {
 	public function __construct(){
