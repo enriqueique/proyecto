@@ -67,7 +67,15 @@ class Hermanos extends Conexion {
 
 	public function update($hermano, $id){
 
-		$hermano['password'] = password_hash($hermano['password'], PASSWORD_DEFAULT);
+		$hermanoEdit = $this->edit($id);
+		$hermanoPass = $hermanoEdit[0]['password'];
+		if ($hermano['password'] != $hermanoPass){
+			$hermano['password'] = password_hash($hermano['password'], PASSWORD_DEFAULT);
+		}else {
+			unset($hermano['password']);
+		}
+
+		//$hermano['password'] = password_hash($hermano['password'], PASSWORD_DEFAULT);
 		
 		foreach ($hermano as $column => $value){
 			$consulta = "UPDATE hermanos SET ". $column ."='". $value . "' WHERE id = ". $id;
